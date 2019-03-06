@@ -39,7 +39,7 @@ void ObjectInfo::parseFunction(const std::string& inp)
 			&& idxStart < idxEnd
 			&& idxStart > 0 )
 	{
-		functionName = command.substr(0, idxStart);
+		functionName = trim(command.substr(0, idxStart));
 		if ( idxEnd-idxStart > 1)
 		{
 			std::string arguments = command.substr(idxStart+1, idxEnd-idxStart-1);

@@ -140,4 +140,20 @@ SCENARIO( "Parsing wierd calls", "[ObjectInfo]" )
 			}
 		}
     }
+
+    GIVEN( "Nothing" )
+    {
+		WHEN( "Creating ObjectInfo with a lot of spaces arguments." )
+		{
+			std::string funName("funName");
+			TestObjectInfo info(std::make_shared<ArgumentParser>(","), funName+"  (  " +  " , "  + "  )   ");
+			THEN("ObjectInfo created.")
+			{
+				REQUIRE(info.getFunctionName() == funName);
+				REQUIRE(info.getArgsNum() == 2);
+				REQUIRE(info.getStrArg(0) == "");
+				REQUIRE(info.getStrArg(1) == "");
+			}
+		}
+    }
 }
